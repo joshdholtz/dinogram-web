@@ -5,6 +5,7 @@
 
 		%link(href="/css/reset.css" media="screen" rel="stylesheet" type="text/css")/
 		%link(href="/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css")/
+		%link(href="/css/bootstrap-responsive.css" media="screen" rel="stylesheet" type="text/css")/
 
 		%link(href='http://fonts.googleapis.com/css?family=Finger+Paint' rel='stylesheet' type='text/css')/
 
@@ -20,7 +21,7 @@
 							%span.icon-bar
 							%span.icon-bar
 							%span.icon-bar
-						%a.brand{:href => "#", :style=> "font-family: 'Finger Paint', cursive;"}
+						%a.brand{:href => "/", :style=> "font-family: 'Finger Paint', cursive;"}
 							Dinogram
 						.nav-collapse
 							%ul.nav
@@ -33,6 +34,31 @@
 								%li
 									%a{:href => "/how"}
 										How?
+							%ul.nav.pull-right
+								%li.dropdown
+									%a#drop.dropdown-toggle{:href => "#", :role => "button", "data-toggle" => "dropdown"}
+										%strong Sign In
+										%b.caret
+									%div.dropdown-menu{:style => "padding: 15px; padding-bottom: 0px;"}
+										%form
+											%input{:type => "text", :size => "30", :placeholder => "Email", :style => "margin-bottom: 15px;"}
+											%input{:type => "password", :size => "30", :placeholder => "Password", :style => "margin-bottom: 15px;"}
+											%input.btn.btn-primary{:type => "submit", :value => "Sign In", :style => "clear: left; width: 100%; height: 32px; font-size: 13px;"}
+
+						%div(style="display: none;")
+							%ul.nav.pull-right
+								%li.dropdown
+									%a#drop.dropdown-toggle{:href => "#", :role => "button", "data-toggle" => "dropdown"}
+										%strong Login
+										%b.caret
+									%ul.dropdown-menu{:role => "menu", "aria-labelledby" => "drop3"}
+										%li
+											%a{:href => "#", :tabindex => "-1"}
+												Profile
+										%li.divider
+										%li
+											%a{:href => "#", :tabindex => "-1"}
+												Logout
 			.container
 				=yield
 
