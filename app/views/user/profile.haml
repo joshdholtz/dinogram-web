@@ -4,5 +4,14 @@
 			%img.img-rounded{:src => @user.image_url}
 			%p #{@user.name}
 
+			- grid_array = @user.photos.each_slice(3).to_a
+
+			.container
+			- grid_array.each do |photos|
+				.row
+					- photos.each do |photo|
+						.span4
+							%img.img-rounded{:src => photo.url, :style => "max-width:100%; height:auto; margin: 15px;"} 
+
 	.span5
 		%img(src="/img/godzilla.png")

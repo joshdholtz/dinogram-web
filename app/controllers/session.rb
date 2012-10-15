@@ -9,7 +9,7 @@ Dinogram.controllers :session do
 
 		login(User, email, password)
 
-		redirect "/"
+		redirect "/dinographer/#{current_user.id}"
 
 	end
 

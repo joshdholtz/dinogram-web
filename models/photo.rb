@@ -1,34 +1,26 @@
 require 'shield'
-# id
-# email
-# name
-# created_on
-# update_on
+# :id
+# :url
+# :caption
+# :share_facebook_url
+# :share_twitter_url
+# :updated_on
+# :created_on
 
-class User < Sequel::Model(:users)
-    one_to_many :photos, :class=>:Photo, :key=>:user_id
-    # one_to_many :registrations, :class=>:Registration, :key=>:user_id
+class Photo < Sequel::Model(:photos)
     # one_to_many :relations, :class=>:Relation, :key=>:user_id
     # one_to_many :event_instructor, :class=>:Event, :key=>:instructor_id
-
-    include Shield::Model
-    def self.fetch(email)
-        first(:email => email)
-    end
 
     plugin :validation_helpers
     def validate 
         super
     end
 
-    def image_url
-        "http://avatars.io/auto/#{self.email}"
-    end
-
     def primitive
         {
             :id=> self.id,
-            :email => self.name,
+            :url => self.url,
+            :caption => self.caption,
             :created_on => self.created_on,
             :updated_on => self.updated_on
         }
