@@ -20,6 +20,10 @@ class User < Sequel::Model(:users)
         super
     end
 
+    def image_url
+        "http://avatars.io/auto/#{self.email}"
+    end
+
     def primitive
         {
             :id=> self.id,
