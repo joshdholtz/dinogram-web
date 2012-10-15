@@ -5,15 +5,15 @@ Dinogram.controllers do
 	end
 
 	get "/what" do
-		render :main
+		render :what
 	end
 
 	get "/why" do
-		render :main
+		render :why
 	end
 
 	get "/how" do
-		render :main
+		render :how
 	end
 
 end
