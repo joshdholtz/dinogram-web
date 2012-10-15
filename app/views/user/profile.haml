@@ -11,7 +11,8 @@
 				.row
 					- photos.each do |photo|
 						.span4
-							%img.img-rounded{:src => photo.url, :style => "max-width:100%; height:auto; margin: 15px;"} 
+							%a{:href => "/gram/#{photo.id}"}
+								%img.img-rounded{:src => photo.url, :style => "max-width:100%; height:auto; margin: 15px;"} 
 
 	.span5
 		%img(src="/img/godzilla.png")
