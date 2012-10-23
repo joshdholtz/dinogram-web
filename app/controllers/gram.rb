@@ -30,7 +30,7 @@ Dinogram.controllers :gram do
 					AWS::S3::S3Object.store(s3_file_name, open(tmpfile),ENV['S3_BUCKET'],:access => :public_read,:content_type => 'image/png')     
 				end
 
-				Photo.create(:url => "https://s3.amazonaws.com/#{ENV['S3_BUCKET']}/#{s3_file_name}", :caption => "", :created_on => Time.now, :updated_on => Time.now, :user_id => 1)
+				Photo.create(:url => "https://s3.amazonaws.com/#{ENV['S3_BUCKET']}/#{s3_file_name}", :caption => "", :created_on => Time.now, :updated_on => Time.now)
 
 			end
 
