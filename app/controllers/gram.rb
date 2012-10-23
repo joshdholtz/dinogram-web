@@ -13,6 +13,8 @@ Dinogram.controllers :gram do
 	post "/" do
 		logger.debug "Params - " + params.to_s
 
+		photo = nil
+
 		params.each_value do |file|
 
 			unless file && (tmpfile = file[:tempfile]) && (name = file[:filename])
@@ -30,13 +32,17 @@ Dinogram.controllers :gram do
 					AWS::S3::S3Object.store(s3_file_name, open(tmpfile),ENV['S3_BUCKET'],:access => :public_read,:content_type => 'image/png')     
 				end
 
-				Photo.create(:url => "https://s3.amazonaws.com/#{ENV['S3_BUCKET']}/#{s3_file_name}", :caption => "", :created_on => Time.now, :updated_on => Time.now)
+				photo = Photo.create(:url => "https://s3.amazonaws.com/#{ENV['S3_BUCKET']}/#{s3_file_name}", :caption => "", :created_on => Time.now, :updated_on => Time.now)
 
 			end
 
 		end
 
-		'success'
+		if photo
+			return 200, {}, photo.json.to_json
+		else
+			return 400, {}, {}
+		end
 
 	end
 
