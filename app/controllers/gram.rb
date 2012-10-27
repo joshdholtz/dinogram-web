@@ -17,7 +17,7 @@ Dinogram.controllers :gram do
 
 		params.each_value do |file|
 
-			unless file && (tmpfile = file[:tempfile]) && (name = file[:filename])
+			unless file && file.is_a?(Hash) && (tmpfile = file[:tempfile]) && (name = file[:filename])
 				logger.debug "Cannot upload"
 			else
 
