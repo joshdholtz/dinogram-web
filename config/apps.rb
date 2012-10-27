@@ -30,7 +30,5 @@ Padrino.configure_apps do
   set :session_secret, 'bf5131871022fee9073199c85f4f9e94e960f9cb25106264fcaca3abf79468d7'
 end
 
-ENV['PADRINO_LOG_LEVEL'] = 'debug'
-
 # Mounts the core application for this project
 Padrino.mount("Dinogram").to('/')
