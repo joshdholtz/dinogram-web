@@ -1,7 +1,7 @@
 Dinogram.controllers :gram do
 
 	get %r{([\d]+)} do |id|
-		@photo = Photo[params[:id]]
+		@photo = Photo[id.to_i]
 
 		unless @photo
 			redirect '/'
