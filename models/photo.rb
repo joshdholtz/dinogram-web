@@ -20,6 +20,7 @@ class Photo < Sequel::Model(:photos)
         {
             :id=> self.id,
             :url => self.url,
+            :url_code => self.url_code,
             :caption => self.caption,
             :created_on => self.created_on,
             :updated_on => self.updated_on

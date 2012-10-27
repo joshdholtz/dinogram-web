@@ -1,7 +1,17 @@
 Dinogram.controllers :gram do
 
-	get ":id" do
+	get %r{([\d]+)} do |id|
 		@photo = Photo[params[:id]]
+
+		unless @photo
+			redirect '/'
+		end
+
+		render 'gram/gram'
+	end
+
+	get %r{([\w]+)} do |url_code|
+		@photo = Photo.filter(:url_code => url_code).first
 
 		unless @photo
 			redirect '/'
