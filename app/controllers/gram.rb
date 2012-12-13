@@ -71,4 +71,8 @@ Dinogram.controllers :gram do
 
 	end
 
+	get "/all.json" do
+		JSON.generate( Photo.limit(200).all.map { |p| p.primitive } )
+	end
+
 end
