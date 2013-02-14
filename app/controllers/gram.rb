@@ -37,30 +37,41 @@ Dinogram.controllers :gram do
 
 		caption = params[:caption]
 
-		params.each_value do |file|
+		image_url = params[:image_url]
 
-			unless file && file.is_a?(Hash) && (tmpfile = file[:tempfile]) && (name = file[:filename])
-				logger.debug "Cannot upload"
-			else
+		if image_url
 
-				logger.debug "Can upload"
+			o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+			url_code  =  (0...12).map{ o[rand(o.length)] }.join
 
-				s3_file_name = SecureRandom.urlsafe_base64.to_s
+			photo = Photo.create(:url => image_url, :caption => caption, :url_code => url_code, :created_on => Time.now, :updated_on => Time.now)
 
-				while blk = tmpfile.read(65536)
-					AWS::S3::Base.establish_connection!(
-					:access_key_id     => ENV['S3_KEY'],
-					:secret_access_key => ENV['S3_SECRET'])
-					AWS::S3::S3Object.store(s3_file_name, open(tmpfile),ENV['S3_BUCKET'],:access => :public_read,:content_type => 'image/png')     
+		else
+			params.each_value do |file|
+
+				unless file && file.is_a?(Hash) && (tmpfile = file[:tempfile]) && (name = file[:filename])
+					logger.debug "Cannot upload"
+				else
+
+					logger.debug "Can upload"
+
+					s3_file_name = SecureRandom.urlsafe_base64.to_s
+
+					while blk = tmpfile.read(65536)
+						AWS::S3::Base.establish_connection!(
+						:access_key_id     => ENV['S3_KEY'],
+						:secret_access_key => ENV['S3_SECRET'])
+						AWS::S3::S3Object.store(s3_file_name, open(tmpfile),ENV['S3_BUCKET'],:access => :public_read,:content_type => 'image/png')     
+					end
+
+					o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+					url_code  =  (0...12).map{ o[rand(o.length)] }.join
+
+					photo = Photo.create(:url => "https://s3.amazonaws.com/#{ENV['S3_BUCKET']}/#{s3_file_name}", :caption => caption, :url_code => url_code, :created_on => Time.now, :updated_on => Time.now)
+
 				end
 
-				o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
-				url_code  =  (0...12).map{ o[rand(o.length)] }.join
-
-				photo = Photo.create(:url => "https://s3.amazonaws.com/#{ENV['S3_BUCKET']}/#{s3_file_name}", :caption => caption, :url_code => url_code, :created_on => Time.now, :updated_on => Time.now)
-
 			end
-
 		end
 
 		if photo
