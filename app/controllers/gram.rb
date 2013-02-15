@@ -42,12 +42,15 @@ Dinogram.controllers :gram do
 		facebook_id = params[:facebook_id]
 		twitter_handle = params[:twitter_handle]
 
+		lat = params[:lat]
+		lng = params[:lng]
+
 		if image_url
 
 			o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
 			url_code  =  (0...12).map{ o[rand(o.length)] }.join
 
-			photo = Photo.create(:url => image_url, :caption => caption, :url_code => url_code, :created_on => Time.now, :updated_on => Time.now, :facebook_id => facebook_id, :twitter_handle => twitter_handle)
+			photo = Photo.create(:url => image_url, :caption => caption, :url_code => url_code, :created_on => Time.now, :updated_on => Time.now, :facebook_id => facebook_id, :twitter_handle => twitter_handle, :lat => lat, :lng => lng)
 
 		else
 			params.each_value do |file|
