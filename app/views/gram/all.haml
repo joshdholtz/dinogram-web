@@ -1,0 +1,5 @@
+- Photo.order(Sequel.desc(:created_on)).limit(10).all.each do |photo|
+	.row-fluid
+		.span2
+		.span8
+			%img.img-rounded{:style => "width:200px; margin: 20px;", :src => "#{photo.url}"}

@@ -1,5 +1,13 @@
 Dinogram.controllers :gram do
 
+	get "/all.json" do
+		JSON.generate( Photo.limit(200).all.map { |p| p.primitive } )
+	end
+
+	get "/all" do
+		render 'gram/all'
+	end
+
 	get %r{/gram/([\d]+)} do |id|
 		@photo = Photo[id.to_i]
 
@@ -86,10 +94,6 @@ Dinogram.controllers :gram do
 			return 400, {}, {}
 		end
 
-	end
-
-	get "/all.json" do
-		JSON.generate( Photo.limit(200).all.map { |p| p.primitive } )
 	end
 
 end

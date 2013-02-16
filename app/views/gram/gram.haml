@@ -1,4 +1,15 @@
 .row-fluid
 	.span2
-	.span8
-		%img.img-rounded{:style => "width:500px;", :src => "#{@photo.url}"}
+	.span6
+		%img.img-rounded{:style => "width:500px; margin: 20px;", :src => "#{@photo.url}"}
+	.span2
+		.row-fluid.hidden-phone{:style => "margin: 20px 0 0 0;"}
+		.row-fluid
+			.span2{:style => "margin: 0 0 10px 10px;"}
+				.fb-like(data-href="http://dinogram.com/g/#{@photo.url_code}" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial")
+		.row-fluid
+			.span2{:style => "margin: 0 0 10px 10px;"}
+				%a(href="https://twitter.com/share" class="twitter-share-button" data-lang="en") Tweet
+				:javascript
+					!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+	

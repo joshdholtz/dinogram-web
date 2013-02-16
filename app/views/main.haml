@@ -1,6 +1,6 @@
 .row-fluid
 	.span7
-		.hero-unit
+		.hero-unit.hidden-phone
 			%h1.hidden-phone Put a dino on it!
 			%h2.visible-phone Put a dino on it!
 			%ul
@@ -8,10 +8,35 @@
 				%li They make everything cooler
 				%li We all love dinsaurs
 
-	.span5
+		%h1.vislble-phone{:style => "text-align: center;"} Put a dino on it
+
+	.span5.hidden-phone
 		%img(src="/img/godzilla.png")
+
 .row-fluid
-	.span6
+	.span5
 		%img(src="/img/screenshot_1.png")
-	.span6
+	.span7
+		.hero-unit
+			%h1.hidden-phone Editosaur
+			%h2.visible-phone Editosaur
+			%ul
+				%li <strong>Drag</strong> to move
+				%li <strong>Pinch</strong> to scale
+				%li <strong>Twist</strong> to rotate
+				%li <strong>Double tap</strong> to flip
+
+.row-fluid
+	.span4.visible-phone
+		%img(src="/img/screenshot_2.png")
+	.span7
+		.hero-unit
+			%h1.hidden-phone Shareosaur
+			%h2.visible-phone Shareosaur
+			%ul
+				%li <strong>Facebook</strong> - share with your friends
+				%li <strong>Twitter</strong> - show your follower
+				%li <strong>Instagram</strong> - are dinos not enough? Add a filter
+
+	.span4.hidden-phone
 		%img(src="/img/screenshot_2.png")
