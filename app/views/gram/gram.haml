@@ -2,6 +2,15 @@
 	.span2
 	.span6
 		%img.img-rounded{:style => "width:500px; margin: 20px;", :src => "#{@photo.url}"}
+
+		.row-fluid
+			.span1
+			- if @photo.twitter_handle
+				.span2
+					%a(href="https://twitter.com/#{@photo.twitter_handle}" class="twitter-follow-button" data-show-count="false" data-lang="en") Follow @#{@photo.twitter_handle}
+					:javascript
+						!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
 	.span2
 		.row-fluid.hidden-phone{:style => "margin: 20px 0 0 0;"}
 		.row-fluid
