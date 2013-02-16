@@ -2,4 +2,5 @@
 	.row-fluid
 		.span2
 		.span8
-			%img.img-rounded{:style => "width:200px; margin: 20px;", :src => "#{photo.url}"}
+			%a{:href => "/g/#{photo.url_code}"}
+				%img.img-rounded{:style => "width:200px; margin: 20px;", :src => "#{photo.url}"}
