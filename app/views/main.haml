@@ -1,17 +1,22 @@
 .row-fluid
-	.span7
-		.hero-unit.hidden-phone
-			%h1.hidden-phone Put a dino on it!
-			%h2.visible-phone Put a dino on it!
-			%ul
-				%li Dinosaurs are awesome
-				%li They make everything cooler
-				%li We all love dinsaurs
+	.span12
+		.hero-unit
+			%h1.hidden-phone Dinogram <small>Put a dino on it!</small>
+			%h2.visible-phone Dinogram <small>Put a dino on it!</small>
+			.row-fluid
+				.span9
+					%p
+						We have been <strong>putting dinosaurs on our things</strong> since we were little kids - our lunchboxes, our backpacks, our t-shirts. 
+					%p
+						Well <strong>NOW</strong> you can <strong>put a dinosaur on anything you want</strong>. Find your scene, take a picture, place your dino, and share it to your friends.
+
+					%p{:style => "padding-top: 20px;"}
+						%a.btn.btn-large.btn-primary{:href => "/wowzers", :style => "padding: 15px 20px; font-size: 22px;"} View featured dinograms now!
+				.span3
+					%img.img-rounded{:src => "https://s3.amazonaws.com/dinogram-dev/D4EE4424-9B4F-465B-A1C7-C76184F308CE"}
 
 		%h1.visible-phone{:style => "text-align: center;"} Put a dino on it
-
-	.span5.hidden-phone
-		%img(src="/img/godzilla.png")
+		
 
 .row-fluid
 	.span5
@@ -26,9 +31,10 @@
 				%li <strong>Twist</strong> to rotate
 				%li <strong>Double tap</strong> to flip
 
-.row-fluid
-	.span4.visible-phone
+.row-fluid.visible-phone
+	.span4
 		%img(src="/img/screenshot_2.png")
+.row-fluid
 	.span7
 		.hero-unit
 			%h1.hidden-phone Shareosaur
@@ -38,5 +44,5 @@
 				%li <strong>Twitter</strong> - show your follower
 				%li <strong>Instagram</strong> - are dinos not enough? Add a filter
 
-	.span4.hidden-phone
+	.span5.hidden-phone
 		%img(src="/img/screenshot_2.png")

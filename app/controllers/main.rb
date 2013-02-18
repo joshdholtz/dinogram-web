@@ -16,4 +16,9 @@ Dinogram.controllers do
 		render :how
 	end
 
+	get "/wowzers" do
+		@photos = Photo.filter(:featured => true).order(Sequel.desc(:created_on)).all
+		render 'gram/all'
+	end
+
 end
