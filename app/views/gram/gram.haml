@@ -2,6 +2,10 @@
 	.span2
 	.span6
 		%img.img-rounded{:style => "width:500px; margin: 0 0 10px 0;", :src => "#{@photo.url}"}
+		.row-fluid
+			.span1
+			.span10
+				%p #{@photo.caption}
 
 		.row-fluid
 			.span1
