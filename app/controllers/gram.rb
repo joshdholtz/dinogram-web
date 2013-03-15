@@ -5,7 +5,10 @@ Dinogram.controllers :gram do
 	end
 
 	get "/all" do
-		@photos = Photo.order(Sequel.desc(:created_on)).limit(10).all
+		size = params[:size] || 10;
+		size = size.to_i
+
+		@photos = Photo.order(Sequel.desc(:created_on)).limit(size).all
 		render 'gram/all'
 	end
 
